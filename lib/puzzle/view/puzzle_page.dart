@@ -82,61 +82,63 @@ class _InputWidgetState extends State<InputWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(
-            height: 50,
-          ),
-          Text("Select No of Colums",
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 50,
+            ),
+            Text("Select No of Colums",
+                style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600)),
+            NumberPicker(
+              value: _currentValueX,
+              minValue: 2,
+              maxValue: 10,
+              onChanged: (value) => setState(() => _currentValueX = value),
+            ),
+            SizedBox(
+              height: 60,
+            ),
+            Text(
+              "Select No of Rows",
               style: TextStyle(
                   color: Colors.black87,
                   fontSize: 18,
-                  fontWeight: FontWeight.w600)),
-          NumberPicker(
-            value: _currentValueX,
-            minValue: 2,
-            maxValue: 10,
-            onChanged: (value) => setState(() => _currentValueX = value),
-          ),
-          SizedBox(
-            height: 60,
-          ),
-          Text(
-            "Select No of Rows",
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 18,
-                fontWeight: FontWeight.w600),
-          ),
-          NumberPicker(
-            value: _currentValueY,
-            minValue: 2,
-            maxValue: 10,
-            onChanged: (value) => setState(() => _currentValueY = value),
-          ),
-          SizedBox(
-            height: 60,
-          ),
-          InkWell(
-            onTap: () {
-              widget.onSubmit(_currentValueX, _currentValueY);
-            },
-            child: Container(
-              child: Text(
-                "SUBMIT",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(20)),
+                  fontWeight: FontWeight.w600),
             ),
-          )
-        ],
+            NumberPicker(
+              value: _currentValueY,
+              minValue: 2,
+              maxValue: 10,
+              onChanged: (value) => setState(() => _currentValueY = value),
+            ),
+            SizedBox(
+              height: 60,
+            ),
+            InkWell(
+              onTap: () {
+                widget.onSubmit(_currentValueX, _currentValueY);
+              },
+              child: Container(
+                child: Text(
+                  "SUBMIT",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(20)),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -22,6 +22,7 @@ dependencies:
   universal_platform: ^1.0.0+1
   numberpicker: ^2.1.2
   url_launcher: ^6.0.17
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   bloc_test: ^9.0.1
